@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio | Pierre-Louis Richard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* RESET ET VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #ff7e5f;
+            --dark: #2d3748;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: 15px; color: var(--gray); }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #ff6b4a;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; }
+        nav li { margin-left: 30px; }
+        nav a { font-weight: 600; position: relative; }
+        nav a:hover { color: var(--primary); }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+        nav a:hover::after { width: 100%; }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 140px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.1) 0%, rgba(255, 126, 95, 0.05) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 { margin-bottom: 15px; }
+        .hero-text .highlight { color: var(--primary); }
+        .hero-text p { font-size: 1.2rem; margin-bottom: 30px; color: var(--dark); }
+        .hero-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .hero-image { text-align: center; }
+        .profile-img { width: 100%; max-width: 400px; border-radius: 50%; box-shadow: var(--shadow); border: 10px solid white; }
+
+        /* ABOUT SECTION */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text { padding-right: 20px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .skill-tag {
+            background: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        /* PROJECTS SECTION */
+        .projects {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.05) 0%, rgba(255, 126, 95, 0.02) 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-info { padding: 25px; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .tech-tag {
+            background: #e9ecef;
+            color: var(--dark);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* VEILLE INFORMATIQUE */
+        .veille-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .veille-item {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .veille-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* SKILLS SECTION */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list i { color: var(--primary); margin-right: 10px; width: 20px; }
+
+        /* CONTACT SECTION */
+        .contact {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.08) 0%, rgba(255, 126, 95, 0.04) 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info { padding-right: 20px; }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .social-links { display: flex; gap: 20px; }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 2rem; }
+            .hero-content, .about-content, .contact-container { grid-template-columns: 1fr; }
+            .hero { padding-top: 120px; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .about-text { padding-right: 0; }
+            .contact-info { padding-right: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul {
+                position: fixed; top: 80px; left: -100%; width: 100%;
+                flex-direction: column; background: white;
+                text-align: center; transition: var(--transition);
+                box-shadow: var(--shadow); padding: 20px 0;
+            }
+            nav.active ul { left: 0; }
+            nav li { margin: 15px 0; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 30px; }
+            .veille-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 0; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Port<span>folio</span></a>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#veille">Veille</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#contact">Mes contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bonjour, je suis <span class="highlight"><br>Pierre-Louis Richard</span></h1>
+                    <h2>Administrateur Système & Réseau</h2>
+                    <p>Je crée et gère des infrastructures réseau avec rigueur et curiosité, tout en explorant de nouvelles technologies.</p>
+                    <div class="hero-btns">
+                        <a href="#projets" class="btn">Voir mes projets</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="" alt="Photo de profil" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="apropos" class="about">
+        <div class="container">
+            <h2>À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Passionné par le réseau et l'administration système</h3>
+                    <p>Je suis actuellement en BTS SIO option SISR et j’ai acquis plusieurs expériences en administration réseau et gestion de projets IT.</p>
+                    <p>Je suis rigoureux, curieux et autonome, et je cherche toujours à apprendre de nouvelles technologies.</p>
+                    <p>Langues : Anglais B1, Espagnol A1+</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projets" class="projects">
+        <div class="container">
+            <h2>Mes projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Edycem - Administrateur réseau</h3>
+                        <p>1 mois et 2 semaines en 2025, Boufféré (85600). Préparation de postes et smartphones pour les utilisateurs, résolution de tickets.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>CWF - Administrateur réseau</h3>
+                        <p>1 mois en 2024, Les Herbiers (85500). Mise en place d’un logiciel d’émargement avec Vizito sur le Cloud, configuration manuelle.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>CWF - Administrateur réseau</h3>
+                        <p>1 mois en 2023, Les Herbiers (85500). Prise en main de Linux (Debian 12, CentOS), installation et utilisation d’Ansible avec interface graphique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VEILLE INFORMATIQUE SECTION -->
+    <section id="veille" class="veille">
+        <div class="container">
+            <h2>Veille Informatique</h2>
+            <div class="veille-grid">
+                <div class="veille-item">
+                    <h3>CyberSécurité</h3>
+                    <p>Surveillance des vulnérabilités et nouvelles méthodes de sécurisation des réseaux.</p>
+                </div>
+                <div class="veille-item">
+                    <h3>Technologies Réseau</h3>
+                    <p>Suivi des nouveautés Fortinet, Cisco et autres technologies réseau.</p>
+                </div>
+                <div class="veille-item">
+                    <h3>Cloud & Virtualisation</h3>
+                    <p>Étude des plateformes cloud (AWS, Azure) et virtualisation pour l'optimisation IT.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETENCES SECTION -->
+    <section id="competences" class="skills-section">
+        <div class="container">
+            <h2>Mes compétences</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Language</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-html5"></i> HTML</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS</li>
+                        <li><i class="fab fa-php"></i> PHP</li>
+                        <li><i class="fas fa-code"></i> C++</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Système & Réseau</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-linux"></i> Linux (Debian)</li>
+                        <li><i class="fab fa-windows"></i> Windows</li>
+                        <li><i class="fas fa-server"></i> Ansible</li>
+                        <li><i class="fas fa-network-wired"></i> Fortinet</li>
+                        <li><i class="fas fa-network-wired"></i> Cisco</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Outils & Softskills</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check"></i> Office 365</li>
+                        <li><i class="fas fa-check"></i> Canva</li>
+                        <li><i class="fas fa-check"></i> Gestion de projet</li>
+                        <li><i class="fas fa-check"></i> Travail en équipe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Mes contacts</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <p>pierrelouis.richard85660@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <p>+33 7 50 06 19 29</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <p>Le chiron de beaulieu, 85660, Saint Philbert de Bouaine, France</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <p>Portfolio de Pierre-Louis Richard</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/pierre-louis-richard-83086b309/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Pierre-LouisRichard/Portfolio/new/main" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Pierre-Louis Richard. Tous droits réservés.</div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('mainNav');
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
