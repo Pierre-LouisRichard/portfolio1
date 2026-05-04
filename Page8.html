@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio | Pierre-Louis Richard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* RESET ET VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #ff7e5f;
+            --dark: #2d3748;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8rem; }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul { list-style: none; }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #ff6b4a;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; }
+
+        nav li { margin-left: 30px; }
+
+        nav a {
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        nav a:hover::after { width: 100%; }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .hero {
+            padding-top: 140px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.1) 0%, rgba(255, 126, 95, 0.05) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 { margin-bottom: 15px; }
+
+        .hero-text .highlight { color: var(--primary); }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image { text-align: center; }
+
+        .profile-img {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            border: 10px solid white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text { padding-right: 20px; }
+
+        .projects {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.05) 0%, rgba(255, 126, 95, 0.02) 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-info { padding: 25px; }
+
+        /* VEILLE INFORMATIQUE */
+        .veille {
+            background: white;
+        }
+
+        .veille-intro {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 35px;
+            color: var(--gray);
+        }
+
+        .veille-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .veille-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .veille-item {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+        }
+
+        .veille-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .veille-item h3 {
+            font-size: 1.2rem;
+        }
+
+        .veille-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .tag-cyber { background: #c0392b; }
+        .tag-reseau { background: #166088; }
+        .tag-cloud { background: #6c5ce7; }
+        .tag-other { background: #6c757d; }
+
+        .rss-loading {
+            text-align: center;
+            color: var(--gray);
+            font-weight: 600;
+            grid-column: 1 / -1;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .sheet-link-box {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .sheet-link-box p {
+            margin-bottom: 25px;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.08) 0%, rgba(255, 126, 95, 0.04) 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info { padding-right: 20px; }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 992px) {
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 2rem; }
+
+            .hero-content,
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 120px;
+                text-align: center;
+            }
+
+            .hero-btns { justify-content: center; }
+
+            .about-text,
+            .contact-info {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+
+            nav.active ul { left: 0; }
+
+            nav li { margin: 15px 0; }
+
+            .projects-grid,
+            .veille-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+
+            section { padding: 60px 0; }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .profile-img {
+                height: 300px;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 260px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Port<span>folio</span></a>
+
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#veille">Veille</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bonjour, je suis <span class="highlight"><br>Pierre-Louis Richard</span></h1>
+                    <h2>Administrateur Système & Réseau</h2>
+                    <p>Je crée et gère des infrastructures réseau avec rigueur et curiosité, tout en explorant de nouvelles technologies.</p>
+
+                    <div class="hero-btns">
+                        <a href="#projets" class="btn">Voir mes projets</a>
+                        <a href="cv/CV Pierre-Louis - Recherche Alternance.pdf" class="btn btn-accent" download>
+                            <i class="fas fa-download"></i> Télécharger mon CV
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img src="images/photo.jpg" alt="Photo de Pierre-Louis Richard" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="about">
+        <div class="container">
+            <h2>À propos de moi</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Passionné par le réseau et l'administration système</h3>
+                    <p>Je suis actuellement en BTS SIO option SISR et j’ai acquis plusieurs expériences en administration réseau et gestion de projets IT.</p>
+                    <p>Je suis rigoureux, curieux et autonome, et je cherche toujours à apprendre de nouvelles technologies.</p>
+                    <p>Langues : Anglais B1, Espagnol A1+</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="projects">
+        <div class="container">
+            <h2>Mes projets</h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Edycem - Administrateur réseau</h3>
+                        <p>1 mois et 2 semaines en 2025, Boufféré. Préparation de postes et smartphones pour les utilisateurs, résolution de tickets.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>CWF - Administrateur réseau</h3>
+                        <p>1 mois en 2024, Les Herbiers. Mise en place d’un logiciel d’émargement avec Vizito sur le Cloud, configuration manuelle.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>CWF - Administrateur réseau</h3>
+                        <p>1 mois en 2023, Les Herbiers. Prise en main de Linux Debian 12, CentOS, installation et utilisation d’Ansible avec interface graphique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VEILLE INFORMATIQUE AVEC FLUX RSS -->
+    <section id="veille" class="veille">
+        <div class="container">
+            <h2>Veille informatique</h2>
+
+            <p class="veille-intro">
+                Cette section présente ma veille technologique réalisée à partir du flux RSS IT-Connect.
+                Les articles sont récupérés automatiquement et classés par thème : cybersécurité, réseau et cloud.
+            </p>
+
+            <div class="veille-filters">
+                <button class="filter-btn active" onclick="filterArticles('all', this)">Tous</button>
+                <button class="filter-btn" onclick="filterArticles('cyber', this)">Cybersécurité</button>
+                <button class="filter-btn" onclick="filterArticles('reseau', this)">Réseau</button>
+                <button class="filter-btn" onclick="filterArticles('cloud', this)">Cloud</button>
+            </div>
+
+            <div id="rssFeed" class="veille-grid">
+                <p class="rss-loading">Chargement des articles IT-Connect...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" class="skills-section">
+        <div class="container">
+            <h2>Mes compétences</h2>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Langages</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-html5"></i> HTML</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS</li>
+                        <li><i class="fab fa-php"></i> PHP</li>
+                        <li><i class="fas fa-code"></i> C++</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Système & Réseau</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-linux"></i> Linux Debian</li>
+                        <li><i class="fab fa-windows"></i> Windows / Windows Server</li>
+                        <li><i class="fas fa-server"></i> Ansible</li>
+                        <li><i class="fas fa-network-wired"></i> Fortinet</li>
+                        <li><i class="fas fa-network-wired"></i> Cisco</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Outils & Soft skills</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check"></i> Office 365</li>
+                        <li><i class="fas fa-check"></i> Canva</li>
+                        <li><i class="fas fa-check"></i> Gestion de projet</li>
+                        <li><i class="fas fa-check"></i> Travail en équipe</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sheet-link-box">
+                <h3>Tableau détaillé des compétences</h3>
+                <p>Retrouvez le détail de mes compétences dans mon tableau Google Sheets.</p>
+
+                <a href="https://docs.google.com/spreadsheets/d/1wZvJOTUEZl51ZfXU3zhpN1UYolmPf9MJMB_5bmLNThM/edit?gid=294416799#gid=294416799"
+                   target="_blank"
+                   class="btn btn-accent">
+                    <i class="fas fa-table"></i> Voir mon tableau de compétences
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact</h2>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <p>pierrelouis.richard85660@gmail.com</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <p>+33 7 50 06 19 29</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <p>Vendée, France</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Portfolio de Pierre-Louis Richard</p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/pierre-louis-richard-83086b309/" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://github.com/Pierre-LouisRichard" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="copyright">© 2026 Pierre-Louis Richard. Tous droits réservés.</div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        let allArticles = [];
+
+        async function fetchRSSFeed() {
+            try {
+                const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.it-connect.fr/feed/");
+                const data = await response.json();
+
+                if (!data.items || data.items.length === 0) {
+                    document.getElementById("rssFeed").innerHTML = `
+                        <p class="rss-loading">Aucun article trouvé pour le moment.</p>
+                    `;
+                    return;
+                }
+
+                allArticles = data.items.slice(0, 12);
+                displayArticles(allArticles);
+
+            } catch (error) {
+                console.error("Erreur RSS :", error);
+
+                document.getElementById("rssFeed").innerHTML = `
+                    <p class="rss-loading">
+                        Impossible de charger le flux RSS pour le moment.
+                        Vous pouvez consulter directement IT-Connect.
+                    </p>
+                `;
+            }
+        }
+
+        function cleanText(html) {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = html;
+            return tempDiv.textContent || tempDiv.innerText || "";
+        }
+
+        function getCategory(title, description) {
+            const text = (title + " " + description).toLowerCase();
+
+            if (
+                text.includes("cyber") ||
+                text.includes("sécurité") ||
+                text.includes("securité") ||
+                text.includes("faille") ||
+                text.includes("vulnérabilité") ||
+                text.includes("vulnerabilite") ||
+                text.includes("attaque") ||
+                text.includes("malware") ||
+                text.includes("ransomware") ||
+                text.includes("cve") ||
+                text.includes("phishing")
+            ) {
+                return "cyber";
+            }
+
+            if (
+                text.includes("réseau") ||
+                text.includes("reseau") ||
+                text.includes("cisco") ||
+                text.includes("fortinet") ||
+                text.includes("firewall") ||
+                text.includes("pare-feu") ||
+                text.includes("vpn") ||
+                text.includes("dns") ||
+                text.includes("dhcp") ||
+                text.includes("vlan") ||
+                text.includes("switch") ||
+                text.includes("routeur")
+            ) {
+                return "reseau";
+            }
+
+            if (
+                text.includes("cloud") ||
+                text.includes("azure") ||
+                text.includes("aws") ||
+                text.includes("microsoft 365") ||
+                text.includes("office 365") ||
+                text.includes("onedrive") ||
+                text.includes("sharepoint") ||
+                text.includes("virtualisation") ||
+                text.includes("vmware") ||
+                text.includes("hyper-v")
+            ) {
+                return "cloud";
+            }
+
+            return "other";
+        }
+
+        function getCategoryLabel(category) {
+            if (category === "cyber") return "Cybersécurité";
+            if (category === "reseau") return "Réseau";
+            if (category === "cloud") return "Cloud";
+            return "Autre";
+        }
+
+        function displayArticles(articles) {
+            const container = document.getElementById("rssFeed");
+            container.innerHTML = "";
+
+            articles.forEach(article => {
+                const title = cleanText(article.title);
+                const description = cleanText(article.description);
+                const category = getCategory(title, description);
+                const categoryLabel = getCategoryLabel(category);
+
+                const card = document.createElement("div");
+                card.className = "veille-item";
+                card.setAttribute("data-category", category);
+
+                card.innerHTML = `
+                    <span class="tag tag-${category}">${categoryLabel}</span>
+                    <h3>${title}</h3>
+                    <p class="veille-date">${new Date(article.pubDate).toLocaleDateString("fr-FR")}</p>
+                    <p>${description.substring(0, 150)}...</p>
+                    <a href="${article.link}" target="_blank" class="btn">Lire l'article</a>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function filterArticles(category, button) {
+            const items = document.querySelectorAll("#rssFeed .veille-item");
+            const buttons = document.querySelectorAll(".filter-btn");
+
+            buttons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            items.forEach(item => {
+                if (category === "all" || item.dataset.category === category) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        fetchRSSFeed();
+    </script>
+
+</body>
+</html>
