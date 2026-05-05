@@ -6,7 +6,6 @@
     <title>Mon Portfolio | Pierre-Louis Richard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* RESET ET VARIABLES */
         * {
             margin: 0;
             padding: 0;
@@ -234,11 +233,14 @@
         }
 
         .project-card {
+            display: block;
             background: white;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            color: inherit;
+            text-decoration: none;
         }
 
         .project-card:hover {
@@ -248,7 +250,6 @@
 
         .project-info { padding: 25px; }
 
-        /* VEILLE INFORMATIQUE */
         .veille {
             background: white;
         }
@@ -378,6 +379,18 @@
 
         .sheet-link-box p {
             margin-bottom: 25px;
+        }
+
+        .certifications {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.05) 0%, rgba(255, 126, 95, 0.02) 100%);
+        }
+
+        .certifications-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 25px;
         }
 
         .contact {
@@ -552,6 +565,7 @@
                     <li><a href="#projets">Projets</a></li>
                     <li><a href="#veille">Veille</a></li>
                     <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -601,38 +615,58 @@
             <h2>Mes projets</h2>
 
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Edycem - Administrateur réseau</h3>
-                        <p>1 mois et 2 semaines en 2025, Boufféré. Préparation de postes et smartphones pour les utilisateurs, résolution de tickets.</p>
-                    </div>
-                </div>
 
-                <div class="project-card">
+                <a href="projets/edycem.html" class="project-card">
                     <div class="project-info">
-                        <h3>CWF - Administrateur réseau</h3>
-                        <p>1 mois en 2024, Les Herbiers. Mise en place d’un logiciel d’émargement avec Vizito sur le Cloud, configuration manuelle.</p>
+                        <h3>Stage 1ère année BTS SIO - Edycem</h3>
+                        <p><strong>Boufféré</strong></p>
+                        <p>Migration de postes Windows 10 vers Windows 11 et préparation de smartphones avec création d’une procédure utilisateur.</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="project-card">
+                <a href="projets/syd.html" class="project-card">
                     <div class="project-info">
-                        <h3>CWF - Administrateur réseau</h3>
-                        <p>1 mois en 2023, Les Herbiers. Prise en main de Linux Debian 12, CentOS, installation et utilisation d’Ansible avec interface graphique.</p>
+                        <h3>Stage 2ème année BTS SIO - SYD Infogérance</h3>
+                        <p><strong>Saint-Nazaire</strong></p>
+                        <p>Mise en place d’une bibliothèque SharePoint pour Signapose dans le cadre d’une migration vers Microsoft 365.</p>
                     </div>
-                </div>
+                </a>
+
+                <a href="projets/proxmox.html" class="project-card">
+                    <div class="project-info">
+                        <h3>Stage BTS SIO - 85 Micro</h3>
+                        <p><strong>La Roche-sur-Yon</strong></p>
+                        <p>Création d’un serveur Proxmox avec un écosystème complet : AD, DNS, serveur Web, Zabbix et GLPI.</p>
+                    </div>
+                </a>
+
+                <a href="projets/ap3.html" class="project-card">
+                    <div class="project-info">
+                        <h3>AP3 - Refonte d’un système d’information</h3>
+                        <p><strong>Projet BTS SIO en équipe</strong></p>
+                        <p>Mise en place d’une infrastructure complète avec AD, réplication, DHCP, DNS dynamique, sauvegarde et supervision Zabbix.</p>
+                    </div>
+                </a>
+
+                <a href="projets/ap4.html" class="project-card">
+                    <div class="project-info">
+                        <h3>AP4 - Infrastructure réseau d’une mairie</h3>
+                        <p><strong>Projet BTS SIO en binôme</strong></p>
+                        <p>Conception d’une maquette Cisco Packet Tracer avec routeurs, switchs, VLAN, DMZ, NAT/PAT et serveur Web.</p>
+                    </div>
+                </a>
+
             </div>
         </div>
     </section>
 
-    <!-- VEILLE INFORMATIQUE AVEC FLUX RSS -->
     <section id="veille" class="veille">
         <div class="container">
             <h2>Veille informatique</h2>
 
             <p class="veille-intro">
-                Cette section présente ma veille technologique réalisée à partir du flux RSS IT-Connect.
-                Les articles sont récupérés automatiquement et classés par thème : cybersécurité, réseau et cloud.
+                Ma veille informatique porte sur la cybersécurité des infrastructures réseau.
+                Les articles sont récupérés automatiquement depuis le flux RSS IT-Connect et classés par thème : cybersécurité, réseau et cloud.
             </p>
 
             <div class="veille-filters">
@@ -664,23 +698,73 @@
                 </div>
 
                 <div class="skill-category">
-                    <h3>Système & Réseau</h3>
+                    <h3>Systèmes</h3>
                     <ul class="skill-list">
+                        <li><i class="fab fa-windows"></i> Windows Server</li>
                         <li><i class="fab fa-linux"></i> Linux Debian</li>
-                        <li><i class="fab fa-windows"></i> Windows / Windows Server</li>
-                        <li><i class="fas fa-server"></i> Ansible</li>
-                        <li><i class="fas fa-network-wired"></i> Fortinet</li>
-                        <li><i class="fas fa-network-wired"></i> Cisco</li>
+                        <li><i class="fas fa-server"></i> Active Directory</li>
+                        <li><i class="fas fa-sync"></i> Réplication AD</li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Outils & Soft skills</h3>
+                    <h3>Réseau</h3>
                     <ul class="skill-list">
-                        <li><i class="fas fa-check"></i> Office 365</li>
-                        <li><i class="fas fa-check"></i> Canva</li>
-                        <li><i class="fas fa-check"></i> Gestion de projet</li>
+                        <li><i class="fas fa-network-wired"></i> VLAN</li>
+                        <li><i class="fas fa-network-wired"></i> DNS / DHCP</li>
+                        <li><i class="fas fa-random"></i> NAT / PAT</li>
+                        <li><i class="fas fa-shield-alt"></i> DMZ / Sécurité réseau</li>
+                        <li><i class="fas fa-network-wired"></i> Cisco / Fortinet</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Virtualisation & Serveurs</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-server"></i> Proxmox</li>
+                        <li><i class="fas fa-desktop"></i> Machines virtuelles</li>
+                        <li><i class="fas fa-globe"></i> Serveur Web</li>
+                        <li><i class="fas fa-database"></i> Serveur de sauvegarde</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & Collaboration</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-cloud"></i> Microsoft 365</li>
+                        <li><i class="fas fa-cloud"></i> SharePoint</li>
+                        <li><i class="fas fa-cloud-upload-alt"></i> Migration Cloud</li>
+                        <li><i class="fas fa-folder-open"></i> Bibliothèque documentaire</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Supervision & Gestion</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-chart-line"></i> Zabbix</li>
+                        <li><i class="fas fa-tools"></i> GLPI</li>
+                        <li><i class="fas fa-cogs"></i> Ansible</li>
+                        <li><i class="fas fa-ticket-alt"></i> Gestion de tickets</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Support & Déploiement</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-user-cog"></i> Support utilisateur</li>
+                        <li><i class="fas fa-laptop"></i> Préparation de postes</li>
+                        <li><i class="fas fa-mobile-alt"></i> Déploiement smartphones</li>
+                        <li><i class="fas fa-file-alt"></i> Rédaction de procédures</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul class="skill-list">
                         <li><i class="fas fa-check"></i> Travail en équipe</li>
+                        <li><i class="fas fa-check"></i> Autonomie</li>
+                        <li><i class="fas fa-check"></i> Rigueur</li>
+                        <li><i class="fas fa-check"></i> Gestion de projet</li>
                     </ul>
                 </div>
             </div>
@@ -689,11 +773,36 @@
                 <h3>Tableau détaillé des compétences</h3>
                 <p>Retrouvez le détail de mes compétences dans mon tableau Google Sheets.</p>
 
-                <a href="https://docs.google.com/spreadsheets/d/1wZvJOTUEZl51ZfXU3zhpN1UYolmPf9MJMB_5bmLNThM/edit?gid=294416799#gid=294416799"
+                <a href="https://docs.google.com/spreadsheets/d/1wZvJOTUEZl51ZfXU3zhpN1UYolmPf9MJMB_5bmLNThM/edit?usp=sharing"
                    target="_blank"
                    class="btn btn-accent">
                     <i class="fas fa-table"></i> Voir mon tableau de compétences
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2>Mes certifications</h2>
+
+            <div class="sheet-link-box">
+                <h3>Certifications professionnelles</h3>
+                <p>Vous pouvez consulter mes certifications via les liens ci-dessous.</p>
+
+                <div class="certifications-buttons">
+                    <a href="https://drive.google.com/file/d/12fJPBuXw4rpSrXK9AVckys_N9gGDsj7-/view?usp=drive_link"
+                       target="_blank"
+                       class="btn">
+                        <i class="fas fa-shield-alt"></i> Certification Wallix
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1nCT8S6agLLmXUJUm_2-GXaMg75Msa6K3/view?usp=sharing"
+                       target="_blank"
+                       class="btn btn-accent">
+                        <i class="fas fa-language"></i> Certification Voltaire
+                    </a>
+                </div>
             </div>
         </div>
     </section>
