@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP3 | Portfolio Pierre-Louis Richard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+    --primary:#4a6fa5;
+    --secondary:#166088;
+    --accent:#ff7e5f;
+    --dark:#2d3748;
+    --light:#f8f9fa;
+    --gray:#6c757d;
+    --shadow:0 5px 15px rgba(0,0,0,0.1);
+    --radius:10px;
+}
+
+body {
+    font-family:'Segoe UI', sans-serif;
+    background:var(--light);
+    color:var(--dark);
+}
+
+.container {
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+
+header {
+    background:white;
+    padding:20px 0;
+    box-shadow:var(--shadow);
+}
+
+.header-content {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo {
+    font-size:1.7rem;
+    font-weight:bold;
+    color:var(--primary);
+}
+
+.logo span { color:var(--accent); }
+
+.btn {
+    padding:12px 25px;
+    background:var(--primary);
+    color:white;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover {
+    background:var(--secondary);
+    transform:translateY(-3px);
+}
+
+.btn-accent { background:var(--accent); }
+
+.hero {
+    padding:80px 0;
+    background:linear-gradient(135deg, rgba(74,111,165,0.15), rgba(255,126,95,0.08));
+}
+
+.hero h1 {
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+.hero p {
+    color:var(--gray);
+    max-width:800px;
+}
+
+.badges {
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.badge {
+    background:white;
+    padding:8px 15px;
+    border-radius:50px;
+    font-weight:600;
+    color:var(--primary);
+    box-shadow:var(--shadow);
+}
+
+.content { padding:70px 0; }
+
+.grid {
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.card {
+    background:white;
+    padding:30px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    margin-bottom:25px;
+}
+
+.card h2 {
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.card p {
+    color:var(--gray);
+    margin-bottom:15px;
+}
+
+.card ul {
+    padding-left:20px;
+}
+
+.card li {
+    margin-bottom:10px;
+}
+
+.info-card {
+    border-left:5px solid var(--accent);
+}
+
+.proof-buttons {
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+footer {
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+@media(max-width:900px){
+    .grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container header-content">
+    <a href="../index.html" class="logo">Port<span>folio</span></a>
+    <a href="../index.html#projets" class="btn">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+    <h1>AP3 - Refonte d’un système d’information</h1>
+    <p>
+        Projet réalisé en équipe de 3 dans le cadre du BTS SIO. 
+        L’objectif était de renouveler entièrement le système d’information d’une entreprise 
+        en mettant en place une infrastructure complète et sécurisée.
+    </p>
+
+    <div class="badges">
+        <span class="badge">Active Directory</span>
+        <span class="badge">Réplication</span>
+        <span class="badge">DHCP</span>
+        <span class="badge">DNS</span>
+        <span class="badge">Zabbix</span>
+        <span class="badge">Sauvegarde</span>
+    </div>
+</div>
+</section>
+
+<section class="content">
+<div class="container grid">
+
+<main>
+
+<div class="card">
+<h2><i class="fas fa-building"></i> Contexte</h2>
+<p>
+Dans le cadre de l’AP3, nous étions dans une situation de prestataire informatique.
+L’objectif était de moderniser le système d’information d’une entreprise en reconstruisant
+une infrastructure complète.
+</p>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-tasks"></i> Missions réalisées</h2>
+<ul>
+<li>Mise en place d’un Active Directory</li>
+<li>Configuration de la réplication AD (ma partie)</li>
+<li>Déploiement d’un serveur DHCP</li>
+<li>Mise en place d’un DNS dynamique</li>
+<li>Installation d’un serveur Web</li>
+<li>Mise en place d’un serveur de sauvegarde</li>
+<li>Supervision avec Zabbix</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-server"></i> Partie personnelle</h2>
+<p>
+Je me suis principalement occupé de la réplication Active Directory.
+Cela impliquait :
+</p>
+<ul>
+<li>Configuration de plusieurs contrôleurs de domaine</li>
+<li>Synchronisation des données AD</li>
+<li>Tests de résilience en cas de panne</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-chart-line"></i> Bilan</h2>
+<p>
+Ce projet m’a permis de comprendre en profondeur le fonctionnement d’une infrastructure AD complète
+et de travailler en équipe sur un projet structuré.
+</p>
+<p>
+J’ai renforcé mes compétences en administration système et en haute disponibilité.
+</p>
+</div>
+
+</main>
+
+<aside>
+
+<div class="card info-card">
+<h2>Informations</h2>
+<p><strong>Projet :</strong> AP3</p>
+<p><strong>Type :</strong> Projet BTS</p>
+<p><strong>Travail :</strong> Équipe (3)</p>
+<p><strong>Spécialité :</strong> SISR</p>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-tools"></i> Technologies</h2>
+<ul>
+<li>Windows Server</li>
+<li>Active Directory</li>
+<li>DHCP</li>
+<li>DNS dynamique</li>
+<li>Zabbix</li>
+<li>Sauvegarde</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-folder-open"></i> Preuve</h2>
+
+<div class="proof-buttons">
+
+<a href="https://drive.google.com/file/d/1E24CydAz268GUvqPNWBPcWrDKvI7gi8X/view?usp=sharing"
+target="_blank"
+class="btn btn-accent">
+<i class="fas fa-file-alt"></i> Documentation technique
+</a>
+
+<a href="../index.html#projets" class="btn">
+Retour au portfolio
+</a>
+
+</div>
+</div>
+
+</aside>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Pierre-Louis Richard - Portfolio BTS SIO</p>
+</footer>
+
+</body>
+</html>

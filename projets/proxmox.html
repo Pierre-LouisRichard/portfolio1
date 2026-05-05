@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage 85 Micro | Portfolio Pierre-Louis Richard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4a6fa5;
+    --secondary: #166088;
+    --accent: #ff7e5f;
+    --dark: #2d3748;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --radius: 10px;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: white;
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.logo span { color: var(--accent); }
+
+.btn {
+    padding: 12px 25px;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+}
+
+.btn-accent { background: var(--accent); }
+
+.hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(74,111,165,0.15), rgba(255,126,95,0.08));
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: var(--gray);
+    max-width: 800px;
+}
+
+.badges {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: white;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    color: var(--primary);
+}
+
+.content {
+    padding: 70px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--gray);
+    margin-bottom: 15px;
+}
+
+.card ul {
+    padding-left: 20px;
+}
+
+.card li {
+    margin-bottom: 10px;
+}
+
+.info-card {
+    border-left: 5px solid var(--accent);
+}
+
+.proof-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-content">
+        <a href="../index.html" class="logo">Port<span>folio</span></a>
+        <a href="../index.html#projets" class="btn">
+            <i class="fas fa-arrow-left"></i> Retour
+        </a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Stage BTS SIO - 85 Micro</h1>
+        <p>
+            Stage réalisé à La Roche-sur-Yon dans une entreprise spécialisée dans la réparation informatique.
+            Mise en place d’une infrastructure complète virtualisée sous Proxmox avec plusieurs services réseau.
+        </p>
+
+        <div class="badges">
+            <span class="badge">Proxmox</span>
+            <span class="badge">AD</span>
+            <span class="badge">DNS</span>
+            <span class="badge">Zabbix</span>
+            <span class="badge">GLPI</span>
+            <span class="badge">Virtualisation</span>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+<div class="container grid">
+
+<main>
+
+<div class="card">
+<h2><i class="fas fa-building"></i> Contexte</h2>
+<p>
+Stage effectué chez 85 Micro, entreprise spécialisée dans la réparation et maintenance de matériel informatique.
+L’objectif était de moderniser l’infrastructure interne en mettant en place un environnement virtualisé.
+</p>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-tasks"></i> Missions réalisées</h2>
+<ul>
+<li>Installation et configuration d’un serveur Proxmox</li>
+<li>Création de machines virtuelles</li>
+<li>Mise en place d’un Active Directory</li>
+<li>Configuration DNS</li>
+<li>Déploiement d’un serveur Web</li>
+<li>Mise en place de Zabbix pour la supervision</li>
+<li>Installation de GLPI pour la gestion de parc</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-server"></i> Infrastructure mise en place</h2>
+<p>
+L’infrastructure reposait sur Proxmox permettant de virtualiser plusieurs services :
+</p>
+<ul>
+<li>Contrôleur de domaine (Active Directory)</li>
+<li>Serveur DNS</li>
+<li>Serveur Web</li>
+<li>Serveur de supervision Zabbix</li>
+<li>Serveur GLPI pour la gestion IT</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-chart-line"></i> Bilan</h2>
+<p>
+Ce stage m’a permis de maîtriser la virtualisation avec Proxmox et de mettre en place une infrastructure complète
+similaire à celle d’une PME.
+</p>
+<p>
+J’ai également renforcé mes compétences en administration système et réseau.
+</p>
+</div>
+
+</main>
+
+<aside>
+
+<div class="card info-card">
+<h2>Informations</h2>
+<p><strong>Entreprise :</strong> 85 Micro</p>
+<p><strong>Lieu :</strong> La Roche-sur-Yon</p>
+<p><strong>Type :</strong> Stage BTS</p>
+<p><strong>Formation :</strong> BTS SIO SISR</p>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-tools"></i> Technologies</h2>
+<ul>
+<li>Proxmox</li>
+<li>Windows Server</li>
+<li>Active Directory</li>
+<li>DNS</li>
+<li>Zabbix</li>
+<li>GLPI</li>
+<li>Virtualisation</li>
+</ul>
+</div>
+
+<div class="card">
+<h2><i class="fas fa-folder-open"></i> Preuves</h2>
+
+<div class="proof-buttons">
+
+<a href="https://docs.google.com/document/d/1osEBdqQjyvb_mFyXYbVYVobkWvsQU5mj3b8ixgH3gDs/edit?usp=sharing"
+target="_blank"
+class="btn btn-accent">
+<i class="fas fa-server"></i> Mise en place serveur Proxmox
+</a>
+
+<a href="https://docs.google.com/document/d/1jqfSGp5d-o_vWeOAG1cdpbglvuZPF2mwvJgTymKbEkA/edit?usp=sharing"
+target="_blank"
+class="btn btn-accent">
+<i class="fas fa-network-wired"></i> Serveur AD et Web
+</a>
+
+<a href="../index.html#projets" class="btn">
+Retour au portfolio
+</a>
+
+</div>
+</div>
+
+</aside>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 Pierre-Louis Richard - Portfolio BTS SIO</p>
+</footer>
+
+</body>
+</html>
