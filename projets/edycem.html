@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stage Edycem | Portfolio Pierre-Louis Richard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4a6fa5;
+    --secondary: #166088;
+    --accent: #ff7e5f;
+    --dark: #2d3748;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --radius: 10px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: white;
+    box-shadow: var(--shadow);
+    padding: 20px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.btn-accent {
+    background: var(--accent);
+}
+
+.hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(74,111,165,0.15), rgba(255,126,95,0.08));
+}
+
+.hero h1 {
+    font-size: 2.7rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: var(--gray);
+    max-width: 800px;
+}
+
+.badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.badge {
+    background: white;
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+.content {
+    padding: 70px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 35px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.card ul {
+    padding-left: 20px;
+}
+
+.card li {
+    margin-bottom: 12px;
+}
+
+.info-card {
+    border-left: 5px solid var(--accent);
+}
+
+.proof-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-content">
+        <a href="../index.html" class="logo">Port<span>folio</span></a>
+        <a href="../index.html#projets" class="btn">
+            <i class="fas fa-arrow-left"></i> Retour aux projets
+        </a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Stage 1ère année BTS SIO - Edycem</h1>
+        <p>
+            Stage réalisé chez Edycem à Boufféré, centré sur la migration de postes vers Windows 11
+            et la préparation de smartphones professionnels.
+        </p>
+
+        <div class="badges">
+            <span class="badge">Stage</span>
+            <span class="badge">BTS SIO</span>
+            <span class="badge">SISR</span>
+            <span class="badge">Windows 11</span>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container grid">
+
+        <main>
+            <div class="card">
+                <h2>Contexte</h2>
+                <p>
+                    Stage réalisé chez Edycem à Boufféré dans le cadre du BTS SIO.
+                    Objectif : préparer les équipements informatiques de l’entreprise.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>Missions</h2>
+                <ul>
+                    <li>Migration Windows 10 → Windows 11</li>
+                    <li>Préparation de postes pour centrales à béton</li>
+                    <li>Configuration de smartphones</li>
+                    <li>Création d’une procédure utilisateur</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Bilan</h2>
+                <p>
+                    Ce stage m’a permis de comprendre le support utilisateur,
+                    la préparation de matériel et l’importance des procédures.
+                </p>
+            </div>
+        </main>
+
+        <aside>
+            <div class="card info-card">
+                <h2>Infos</h2>
+                <p><strong>Entreprise :</strong> Edycem</p>
+                <p><strong>Lieu :</strong> Boufféré</p>
+                <p><strong>Type :</strong> Stage</p>
+            </div>
+
+            <div class="card">
+                <h2>Technologies</h2>
+                <ul>
+                    <li>Windows</li>
+                    <li>Smartphones</li>
+                    <li>Support IT</li>
+                </ul>
+            </div>
+
+            <!-- PREUVES AJOUTÉES -->
+            <div class="card">
+                <h2>Preuves</h2>
+
+                <div class="proof-buttons">
+                    <a href="https://drive.google.com/file/d/1wBDsgWcWwbH4-oYGwR5MAVhO5iBNDmxk/view?usp=drive_link"
+                       target="_blank"
+                       class="btn btn-accent">
+                        <i class="fas fa-mobile-alt"></i> Procédure téléphone
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1Peqgzk_F09DFZtS7JD9NIMi91ErPZuGm/view?usp=drive_link"
+                       target="_blank"
+                       class="btn btn-accent">
+                        <i class="fas fa-desktop"></i> PC centrale
+                    </a>
+
+                    <a href="../index.html#projets" class="btn">
+                        Retour
+                    </a>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Pierre-Louis Richard</p>
+</footer>
+
+</body>
+</html>
